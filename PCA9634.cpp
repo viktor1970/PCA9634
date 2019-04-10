@@ -62,9 +62,9 @@ uint8_t PCA9634::led_mode(uint8_t led, uint8_t mode){
   case 7: {_reg0D &=0x3F; break;}
  }
  if(led<4)
-  { _reg0C|=mode<<(led*2); write_reg(0x0C, _reg0C);}
+  { _reg0C|=mode<<(led*2); write_reg(0x0C, _reg0C); _reg0Cg=_reg0C;}
   else
-  { _reg0D|=mode<<(led*2); write_reg(0x0D, _reg0D);}
+  { _reg0D|=mode<<(led*2); write_reg(0x0D, _reg0D);  _reg0Dg=_reg0D;}
 }
 
 uint8_t PCA9634::set_led_global(uint8_t led, uint8_t mode){
@@ -80,8 +80,8 @@ uint8_t PCA9634::set_led_global(uint8_t led, uint8_t mode){
   case 6: {_reg0Dg &=0xCF; break;}
   case 7: {_reg0Dg &=0x3F; break;}
  }
- if(led<4){ _reg0Cg|=mode<<(led*2); }
-  else    { _reg0Dg|=mode<<(led*2); }
+ if(led<4){ _reg0Cg|=mode<<(led*2); _reg0C=_reg0Cg;}
+  else    { _reg0Dg|=mode<<(led*2); _reg0D=_reg0Dg;}
 }
 
 uint8_t PCA9634::apply_led_global(void){

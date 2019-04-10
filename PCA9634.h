@@ -11,8 +11,8 @@
 #define PCA9634_PWM			0x02		// brightness control LED0 (LED1=0X03, LED2=0x04 and so on)
 #define PCA9634_GRPPWM		0x0A		// group duty cycle
 #define PCA9634_GRPFREQ		0x0B		// group frequency
-#define PCA9634_LEDOUT0		0x0C		// LED output state 0
-#define PCA9634_LEDOUT1		0x0D		// LED output state 1
+#define PCA9634_LEDOUT0		0x0C		// LED output state 0 (LEDs 0-3)
+#define PCA9634_LEDOUT1		0x0D		// LED output state 1 (LEDs 4-7)
 
 // LEDOUT0 and LEDOUT1 output state register
 #define PCA9634_LEDOFF			0x00		// LED OFF 
@@ -24,9 +24,6 @@
 #define PCA9634_DMBLNK 			0x20		// Group control: blinking (default: dimming)
 #define PCA9634_INVRT  			0x10		// Output logic state inverted (default: not inverted)
 #define PCA9634_OUTDRV 			0x00		// Open-drain output (default: totem-pole output)
-
-#define ADDRESS_HI							0x12
-#define ADDRESS_LO							0x34
 
 #include <Wire.h>
 
